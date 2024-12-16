@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Homepage</title>
+</head>
+<body class="home">
+    <header class="navbar">
+        <div class="hcontainer">
+            <div class="logo"><a>Recipe App</a></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('serve_about') }}">About Us</a></li>
+
+                    <li><a href="index.html" class="find">Find</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="grid">
+        <div class="content">
+            <div class="content-left">
+                <div class="info">
+                    <h2>Welcome to <br>Recipe App</h2>
+                    <p>Discover endless recipes from around the world<br>
+                        All in one place.</p>
+                </div>
+                <button class="zzz"><a href="{{ url_for('index') }}">Find Recipe</a></button>
+
+            </div>
+            <div class="content-right">
+                <img src="{{ url_for('static', filename='food3.png') }}" alt="awkoak">
+
+            </div>
+        </div>
+    </section>
+    <footer style="text-align: center; padding: 20px; background-color: #f8f8f8; border-top: 1px solid #ccc;" >
+        <p>&copy; Made by Group 4</p>
+        <div>
+            <a href="#" style="margin: 0 10px; text-decoration: none; color: #0084ff;">[Our Socials Klo Ada]</a>
+        </div>
+    </footer>
+</body>
+</html>

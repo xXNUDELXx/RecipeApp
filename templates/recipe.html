@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.title }}</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #f8f8f8; border-bottom: 1px solid #ccc;">
+        <h1 style="margin: 0;">{{ recipe.title }}</h1>
+        <a href="/" style="text-decoration: none;">
+            <button style="cursor: pointer; background-color: #4CAF50; color: white; border: none; padding: 8px 12px;">Home</button>
+        </a>
+    </header>
+    <div class="recipe-container" style="padding: 20px;">
+        {% if recipe.image %}
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" style="max-width: 100%; height: auto; display: block; margin: 0 auto; padding-bottom: 20px;">
+        {% endif %}
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredient in recipe.extendedIngredients %}
+                <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Instructions</h2>
+        {% if recipe.instructions %}
+            <p>{{ recipe.instructions | safe }}</p>
+        {% else %}
+            <p>No instructions available for this recipe.</p>
+        {% endif %}
+    </div>
+    <footer style="text-align: center; padding: 20px; background-color: #f8f8f8; border-top: 1px solid #ccc;">
+        <p>&copy; Made by Group 4</p>
+    </footer>
+</body>
+</html>

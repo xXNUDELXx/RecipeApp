@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #dddddd; border-bottom: 1px solid #ccc;">
+        <a href="{{ url_for('serve_home') }}">
+            <button style="background-color: #dddddd; border: none;"> 
+                <h1 style="margin: 0; flex-shrink: 0;">Recipe App</h1>
+            </button>
+        </a>
+          
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <form method="POST" action="/">
+                <input type="text" name="search_query" placeholder="Search for recipes..." style="width: 300px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" style="cursor: pointer; background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px;">Search</button>
+            </form>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <a href="{{ url_for('serve_home') }}" style="text-decoration: none;">
+                <button style="cursor: pointer; background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px;">Home</button>
+            </a>
+            <a href="{{ url_for('serve_about') }}" style="text-decoration: none;">
+                <button style="cursor: pointer; background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px;">About Us</button>
+            </a>
+            
+        </div>
+    </header>
+
+    <div class="recipe-list" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; justify-content: center;">
+        {% if recipes %}
+            {% for recipe in recipes %}
+                <div class="recipe-card" style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
+                    {% if recipe.image %}
+                        <img src="{{ recipe.image }}" alt="{{ recipe.title }}" style="width: 100%; height: auto;">
+                    {% endif %}
+                    <h3 style="margin: 10px 0;">{{ recipe.title }}</h3>
+                    <a href="/recipe/{{ recipe.id }}" target="_blank">
+                        <button style="cursor: pointer; background-color: #4CAF50; color: white; border: none; padding: 8px 12px;">View Recipe</button>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center;">No recipes found.</p>
+        {% endif %}
+    </div>
+    <style>
+        button:hover{opacity: 0.6;}
+        button:active {opacity: 0.3;}
+    </style>
+    <footer style="text-align: center; padding: 20px; background-color: #f8f8f8; border-top: 1px solid #ccc;" >
+        <p>&copy; Made by Group 4</p>
+        <div>
+            <a href="#" style="margin: 0 10px; text-decoration: none; color: #0084ff;">[Our Socials Klo Ada]</a>
+        </div>
+    </footer>
+</body>
+</html>
